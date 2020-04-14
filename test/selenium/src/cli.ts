@@ -1,3 +1,3 @@
 import yargs from 'yargs'
 
-yargs.commandDir('commands', {extensions: ['ts']}).demandCommand().help().argv
+yargs.commandDir('../../testdeck/src/commands', {extensions: ['ts']}).demandCommand().help().argv

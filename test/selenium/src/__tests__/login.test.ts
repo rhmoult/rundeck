@@ -1,11 +1,11 @@
-import {Context} from 'context'
-import {CreateContext} from 'test/selenium'
+import {Context} from '@rundeck/testdeck/context'
+import {CreateContext} from '@rundeck/testdeck/test/selenium'
 import {LoginPage} from 'pages/login.page'
 import {LogoutPage} from 'pages/logOut.page'
 import {NavigationPage} from 'pages/navigation.page'
 import {By,until} from 'selenium-webdriver'
 
-import 'test/rundeck'
+import '@rundeck/testdeck/test/rundeck'
 import { ProjectListPage } from 'pages/projectList.page'
 
 // We will initialize and cleanup in the before/after methods

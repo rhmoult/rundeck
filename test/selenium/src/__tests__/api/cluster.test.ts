@@ -1,5 +1,5 @@
-import { CreateTestContext } from "test/api"
-import { waitForRundeckReady } from "util/RundeckAPI"
+import { CreateTestContext } from "@rundeck/testdeck/test/api"
+import { waitForRundeckReady } from "@rundeck/testdeck/util/RundeckAPI"
 
 const context = CreateTestContext({})
 

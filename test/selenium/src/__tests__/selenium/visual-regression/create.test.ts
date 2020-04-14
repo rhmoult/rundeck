@@ -1,13 +1,13 @@
-import {Context} from 'context'
-import {CreateContext} from 'test/selenium'
+import {Context} from '@rundeck/testdeck/context'
+import {CreateContext} from '@rundeck/testdeck/test/selenium'
 import {ProjectCreatePage} from 'pages/projectCreate.page'
 import {LoginPage} from 'pages/login.page'
 import {JobCreatePage} from 'pages/jobCreate.page'
-import {JobShowPage} from "../../pages/jobShow.page"
-import {Elems as ShowPageElems} from '../../pages/jobShow.page'
+import {JobShowPage} from "pages/jobShow.page"
+import {Elems as ShowPageElems} from 'pages/jobShow.page'
 import {By, until} from 'selenium-webdriver'
-import {sleep} from 'async/util';
-import 'test/rundeck'
+
+import '@rundeck/testdeck/test/rundeck'
 
 // We will initialize and cleanup in the before/after methods
 let ctx: Context
