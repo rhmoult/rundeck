@@ -71,7 +71,7 @@ class SeleniumCommand {
 
         await waitForRundeckReady(client)
 
-        const importer = new ProjectImporter('./lib', 'SeleniumBasic', client)
+        const importer = new ProjectImporter('./lib/projects', 'SeleniumBasic', client)
         await importer.importProject()
 
         const ret = await spawn('/bin/sh', ['-c', args], {
