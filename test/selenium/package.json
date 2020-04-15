@@ -82,6 +82,7 @@
     "outputDirectory": "./test_out/junit"
   },
   "devDependencies": {
+    "@rundeck/testdeck": "*",
     "jest-junit": "^10.0.0",
     "lerna": "^3.20.2"
   }
