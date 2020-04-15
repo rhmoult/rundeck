@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "selenium": "./bin/deck selenium",
     "selenium:watch": "./bin/deck selenium -j='--watch'",
     "selenium:debug:watch": "./bin/deck selenium --debug -j='--no-cache --watch'",
@@ -81,6 +82,7 @@
     "outputDirectory": "./test_out/junit"
   },
   "devDependencies": {
-    "jest-junit": "^10.0.0"
+    "jest-junit": "^10.0.0",
+    "lerna": "^3.20.2"
   }
 }
