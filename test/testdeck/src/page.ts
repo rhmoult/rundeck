@@ -1,4 +1,4 @@
-import {Context} from 'context'
+import {Context} from './context'
 import {By, until, WebElement} from 'selenium-webdriver'
 
 export abstract class Page {

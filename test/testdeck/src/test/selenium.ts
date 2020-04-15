@@ -4,8 +4,8 @@ import webdriver from 'selenium-webdriver'
 import {toMatchImageSnapshot} from 'jest-image-snapshot'
 
 
-import {Context} from 'context'
-import {ParseBool} from 'util/parseBool'
+import {Context} from '../context'
+import {ParseBool} from '../util/parseBool'
 
 const opts = new Options()
 

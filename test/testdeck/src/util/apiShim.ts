@@ -1,7 +1,7 @@
 import CP from 'child_process'
 import FS from 'fs'
 
-import {envOpts} from 'test/selenium'
+import {envOpts} from '../test/selenium'
 
 const skipTests = [
     'test-job-run-steps.sh', // Requires file on Rundeck server(s)

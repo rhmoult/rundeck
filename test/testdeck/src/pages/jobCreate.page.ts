@@ -1,7 +1,7 @@
 import {By, WebElement, WebElementPromise, until} from 'selenium-webdriver'
 
-import {Page} from 'page'
-import { Context } from 'context';
+import {Page} from '../page'
+import { Context } from '../context';
 
 export const Elems= {
     jobNameInput  : By.css('form input[name="jobName"]'),

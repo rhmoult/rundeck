@@ -1,6 +1,6 @@
 import {By} from 'selenium-webdriver'
 
-import {Page} from 'page'
+import {Page} from '../page'
 
 export enum Elems {
     drpProjectSelect = '//*[@id="projectSelect"]',

@@ -1,5 +1,5 @@
-import {Context} from 'context'
-import {Page} from 'page'
+import {Context} from '../context'
+import {Page} from '../page'
 import {By, until} from 'selenium-webdriver'
 
 export enum Elems {
