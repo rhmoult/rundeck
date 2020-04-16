@@ -52,7 +52,8 @@ class ApiCommand {
             })
             .option('s3-upload', {
                 describe: 'Upload to s3; credentials must be available',
-                type: 'boolean'
+		type: 'boolean',
+                default: false
             })
             .option('s3-base', {
                 describe: 'Base path for uploading artifacts',
