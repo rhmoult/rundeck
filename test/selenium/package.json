@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "cd ../ && npm run bootstrap",
     "selenium": "./bin/deck selenium",
     "selenium:watch": "./bin/deck selenium -j='--watch'",
     "selenium:debug:watch": "./bin/deck selenium --debug -j='--no-cache --watch'",
