@@ -18,10 +18,15 @@ export class Context {
     uploadPromises: Promise<{}>[] = []
     snapCounter = 0
     contextId: string
+    driver!: WebDriver
 
-    constructor(readonly driver: WebDriver, readonly baseUrl: string, readonly s3Upload: boolean, readonly s3Base: string) {
+    constructor(readonly driverProvider: () => Promise<WebDriver>, readonly baseUrl: string, readonly s3Upload: boolean, readonly s3Base: string) {
         this.s3 = new S3({region: 'us-west-2'})
         this.contextId = v1().slice(0,4)
+    }
+
+    async init() {
+        this.driver = await this.driverProvider()
     }
 
     urlFor(path: string) {

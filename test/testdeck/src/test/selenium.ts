@@ -19,7 +19,7 @@ export const envOpts = {
     S3_BASE: process.env.S3_BASE,
 }
 
-export async function CreateContext() {
+export function CreateContext() {
     if (envOpts.HEADLESS) {
         opts.addArguments('--headless', 'window-size=1192,870', '--no-sandbox')
         expect.extend({ toMatchImageSnapshot })
@@ -38,12 +38,36 @@ export async function CreateContext() {
 
     opts.addArguments('--disable-rtc-smoothness-algorithm', '--disable-gpu-compositing', '--disable-gpu', '--force-device-scale-factor=1', '--disable-lcd-text', '--disable-dev-shm-usage')
 
-    let driver = await new webdriver.Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(opts)
-        .build()
 
-    let ctx = new Context(driver, envOpts.RUNDECK_URL, envOpts.S3_UPLOAD, envOpts.S3_BASE)
+    let driverProvider = async () => {
+        return new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(opts)
+            .build()
+    }
+
+    let ctx = new Context(driverProvider, envOpts.RUNDECK_URL, envOpts.S3_UPLOAD, envOpts.S3_BASE)
+
+    /**
+     * Configure before/after handlers common to all Selenium test suites
+     */
+    beforeAll( async () => {
+        await ctx.init()
+    })
+    
+    beforeEach( async () => {
+        ctx.currentTestName = expect.getState().currentTestName
+        await ctx.screenSnap('initial')
+    })
+    
+    afterAll( async () => {
+        if (ctx)
+            await ctx.dispose()
+    })
+    
+    afterEach( async () => {
+        await ctx.screenSnap('final')
+    })
 
     return ctx
 }
