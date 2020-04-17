@@ -8,33 +8,18 @@ import {until, By, Key} from 'selenium-webdriver'
 import '@rundeck/testdeck/test/rundeck'
 
 // We will initialize and cleanup in the before/after methods
-let ctx: Context
+let ctx = CreateContext()
 let loginPage: LoginPage
 let jobCreatePage: JobCreatePage
 
 beforeAll( async () => {
-    ctx = await CreateContext()
     loginPage = new LoginPage(ctx)
     jobCreatePage = new JobCreatePage(ctx, 'SeleniumBasic')
 })
 
-beforeEach( async () => {
-    ctx.currentTestName = expect.getState().currentTestName
-})
-
-afterAll( async () => {
-    if (ctx)
-        await ctx.dispose()
-})
-
-// afterEach( async () => {
-//     await ctx.screenSnap('final')
-// })
-
 beforeAll(async () => {
     await loginPage.login('admin', 'admin')
 })
-
 
 describe('job', () => {
     it('edit job description', async () => {

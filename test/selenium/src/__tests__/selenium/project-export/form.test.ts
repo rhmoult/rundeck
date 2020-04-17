@@ -23,28 +23,14 @@ import {until} from 'selenium-webdriver'
 import '@rundeck/testdeck/test/rundeck'
 
 // We will initialize and cleanup in the before/after methods
-let ctx: Context
+let ctx = CreateContext()
 let loginPage: LoginPage
 let projectExportPage: ProjectExportPage
 
 beforeAll( async () => {
-  ctx = await CreateContext()
-  loginPage = new LoginPage(ctx)
-  projectExportPage = new ProjectExportPage(ctx, 'SeleniumBasic')
-  await loginPage.login('admin', 'admin')
-})
-
-afterAll( async () => {
-    if (ctx)
-        await ctx.dispose()
-})
-
-beforeEach( async () => {
-  ctx.currentTestName = expect.getState().currentTestName
-})
-
-afterEach( async () => {
-  await ctx.screenSnap('final')
+    loginPage = new LoginPage(ctx)
+    projectExportPage = new ProjectExportPage(ctx, 'SeleniumBasic')
+    await loginPage.login('admin', 'admin')
 })
 
 describe('projectExport', () => {

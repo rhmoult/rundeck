@@ -9,32 +9,18 @@ import '@rundeck/testdeck/test/rundeck'
 import { ProjectListPage } from 'pages/projectList.page'
 
 // We will initialize and cleanup in the before/after methods
-let ctx: Context
+let ctx = CreateContext()
 let loginPage: LoginPage
 let navigation: NavigationPage
 let projectList: ProjectListPage
 let logoutPage: LogoutPage
 
 beforeAll( async () => {
-    ctx = await CreateContext()
     loginPage = new LoginPage(ctx)
     navigation = new NavigationPage(ctx)
     projectList = new ProjectListPage(ctx)
     logoutPage = new LogoutPage(ctx)
 })
-
-beforeEach( async () => {
-    ctx.currentTestName = expect.getState().currentTestName
-})
-
-afterAll( async () => {
-    if (ctx)
-        await ctx.dispose()
-})
-
-// afterEach( async () => {
-    // await ctx.screenSnap('final')
-// })
 
 it('Logs in through the GUI', async () => {
     await loginPage.get()

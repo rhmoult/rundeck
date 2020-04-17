@@ -8,28 +8,13 @@ import '@rundeck/testdeck/test/rundeck'
 import { sleep } from '@rundeck/testdeck/async/util'
 
 // We will initialize and cleanup in the before/after methods
-let ctx: Context
+let ctx = CreateContext()
 let loginPage: LoginPage
 let navigation: NavigationPage
 
 beforeAll( async () => {
-    ctx = await CreateContext()
     loginPage = new LoginPage(ctx)
     navigation = new NavigationPage(ctx)
-})
-
-beforeEach( async () => {
-    ctx.currentTestName = expect.getState().currentTestName
-    await ctx.screenSnap('initial')
-})
-
-afterAll( async () => {
-    if (ctx)
-        await ctx.dispose()
-})
-
-afterEach( async () => {
-    await ctx.screenSnap('final')
 })
 
 describe('expanded navigation bar', () => {

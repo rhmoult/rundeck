@@ -1,4 +1,3 @@
-import {Context} from '@rundeck/testdeck/context'
 import {CreateContext} from '@rundeck/testdeck/test/selenium'
 import {ProjectCreatePage} from 'pages/projectCreate.page'
 import {LoginPage} from 'pages/login.page'
@@ -10,29 +9,15 @@ import {By, until} from 'selenium-webdriver'
 import '@rundeck/testdeck/test/rundeck'
 
 // We will initialize and cleanup in the before/after methods
-let ctx: Context
+let ctx = CreateContext()
 let loginPage: LoginPage
 let projectCreate: ProjectCreatePage
 let jobCreatePage: JobCreatePage
 
 beforeAll( async () => {
-    ctx = await CreateContext()
     loginPage = new LoginPage(ctx)
     projectCreate = new ProjectCreatePage(ctx)
     jobCreatePage = new JobCreatePage(ctx, 'SeleniumBasic')
-})
-
-beforeEach( async () => {
-    ctx.currentTestName = expect.getState().currentTestName
-})
-
-afterAll( async () => {
-    if (ctx)
-        await ctx.dispose()
-})
-
-afterEach( async () => {
-    await ctx.screenSnap('final')
 })
 
 beforeAll(async () => {
