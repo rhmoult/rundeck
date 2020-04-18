@@ -23,11 +23,14 @@
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${workspaceFolder}/bin/deck",
             "runtimeArgs": [
-                "selenium",
+                "test",
                 "--debug",
                 "-u",
                 "http://localhost",
-                "-j=--watch --testNamePattern noop"],
+                "-s", "${input:testSuite}",
+                "-n", "^noop$",
+                "--watch"
+            ],
             "outputCapture": "std",
             "console": "integratedTerminal",
             "timeout": 20000,
@@ -38,6 +41,14 @@
             "request": "attach",
             "name": "Attach",
             "port": 9229,
+        }
+    ],
+    "inputs": [
+        {
+            "id": "testSuite",
+            "description": "Test suite pattern to narrow down the evaluated files: ie selenium|api",
+            "type": "promptString",
+            "default": "'.*'"
         }
     ]
 }
