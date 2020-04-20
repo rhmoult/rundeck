@@ -10,7 +10,7 @@ let context = CreateTestContext({
 })
 
 describe('Jobs', () => {
-    it('Scooby Doos', async () => {
+    it('Runs workflow steps', async () => {
         const {cluster} = context
 
         /** Load files onto cluster */
